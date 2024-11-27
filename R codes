@@ -1,0 +1,136 @@
+# 1. Load the Data
+# Load necessary libraries
+library(dplyr)
+library(ggplot2)
+
+# Load the dataset
+data <- read.csv("Healthcare_Data_cleaning.csv")
+
+# View the first few rows to confirm successful loading
+head(data)
+
+# 2. Descriptive Statistics
+# Descriptive Statistics
+# Mean
+mean(data$How.old.are.you., na.rm = TRUE)
+mean(data$How.many.people.are.in.your.household., na.rm = TRUE)
+
+# Median
+median(data$How.old.are.you., na.rm = TRUE)
+median(data$How.many.people.are.in.your.household., na.rm = TRUE)
+
+# Mode function
+get_mode <- function(v) {
+  uniqv <- unique(na.omit(v))
+  uniqv[which.max(tabulate(match(v, uniqv)))]
+}
+get_mode(data$How.old.are.you.)
+get_mode(data$How.many.people.are.in.your.household.)
+
+# Min and Max
+min(data$How.old.are.you., na.rm = TRUE)
+max(data$How.old.are.you., na.rm = TRUE)
+
+min(data$How.many.people.are.in.your.household., na.rm = TRUE)
+max(data$How.many.people.are.in.your.household., na.rm = TRUE)
+
+# 3. Frequency Counts
+# Count Nationality
+table(data$What.is.your.nationality.)
+
+# Count Common Illness
+table(data$What.are.the.common.illness.reported.within.your.locality.)
+
+
+# 
+Below is the R code to replicate what was done in Excel using the saved dataset Healthcare_Data_cleaning.csv. Ensure the file is saved in your working directory or adjust the file path accordingly.
+
+1. Load the Data
+r
+Copy code
+# Load necessary libraries
+library(dplyr)
+library(ggplot2)
+
+# Load the dataset
+data <- read.csv("Healthcare_Data_cleaning.csv")
+
+# View the first few rows to confirm successful loading
+head(data)
+2. Descriptive Statistics
+Mean, Median, Mode, Min, and Max for Age and Household Size
+r
+Copy code
+# Mean
+mean(data$How.old.are.you., na.rm = TRUE)
+mean(data$How.many.people.are.in.your.household., na.rm = TRUE)
+
+# Median
+median(data$How.old.are.you., na.rm = TRUE)
+median(data$How.many.people.are.in.your.household., na.rm = TRUE)
+
+# Mode function
+get_mode <- function(v) {
+  uniqv <- unique(na.omit(v))
+  uniqv[which.max(tabulate(match(v, uniqv)))]
+}
+get_mode(data$How.old.are.you.)
+get_mode(data$How.many.people.are.in.your.household.)
+
+# Min and Max
+min(data$How.old.are.you., na.rm = TRUE)
+max(data$How.old.are.you., na.rm = TRUE)
+
+min(data$How.many.people.are.in.your.household., na.rm = TRUE)
+max(data$How.many.people.are.in.your.household., na.rm = TRUE)
+3. Frequency Counts
+Counts for Nationality and Common Illness
+r
+Copy code
+# Count Nationality
+table(data$What.is.your.nationality.)
+
+# Count Common Illness
+table(data$What.are.the.common.illness.reported.within.your.locality.)
+
+# 4. Comparative Analysis
+# Average Household Size for Different Nationalities
+data %>%
+  group_by(What.is.your.nationality.) %>%
+  summarise(Average_Household_Size = mean(How.many.people.are.in.your.household., na.rm = TRUE))
+
+# Average Travel Time to Health Center by Age Group
+data$Age_Group <- ifelse(data$How.old.are.you. < 25, "<25", "25 and above")
+data %>%
+  group_by(Age_Group) %>%
+  summarise(Average_Travel_Time = mean(How.long.do.you.take.to.reach.a.health.center.by.foot.minutes.., na.rm = TRUE))
+
+# 5. Correlation Analysis
+cor(data$How.many.people.are.in.your.household., data$How.long.do.you.take.to.reach.a.health.center.by.foot.minutes.., use = "complete.obs")
+
+#6. Visualizations
+# Create data for pie chart
+nationality_data <- data %>%
+  count(What.is.your.nationality.)
+
+# Plot pie chart
+ggplot(nationality_data, aes(x = "", y = n, fill = What.is.your.nationality.)) +
+  geom_bar(stat = "identity", width = 1) +
+  coord_polar("y", start = 0) +
+  labs(title = "Nationality Distribution", fill = "Nationality")
+#Bar Chart for Common Illness
+ggplot(data, aes(x = What.are.the.common.illness.reported.within.your.locality.)) +
+  geom_bar(fill = "blue") +
+  labs(title = "Common Illness Distribution", x = "Illness", y = "Count") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+# Scatter Plot for Age vs. Travel Time
+ggplot(data, aes(x = How.old.are.you., y = How.long.do.you.take.to.reach.a.health.center.by.foot.minutes..)) +
+  geom_point(color = "red") +
+  geom_smooth(method = "lm", color = "blue") +
+  labs(title = "Age vs. Time to Reach Health Center", x = "Age", y = "Travel Time (minutes)")
+
+
+# 7.Saving Outputs
+# Save summaries for further use
+write.csv(avg_household_size, "Average_Household_Size_by_Nationality.csv", row.names = FALSE)
+write.csv(avg_travel_time, "Average_Travel_Time_by_Age_Group.csv", row.names = FALSE)
