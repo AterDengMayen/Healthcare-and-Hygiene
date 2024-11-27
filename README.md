@@ -31,31 +31,45 @@ Healthcare Satisfaction: Participants' experiences with local healthcare service
 Local Chemists: Number of chemists in the participant's locality.
 
 **Tools Used**
+
 The project was completed using two separate approaches:
 
-Excel:
+**Excel:**
 
 Used for data entry, organization, and preliminary analysis.
+
 Basic charts and summary statistics were created to provide initial insights.
-R Studio:
+
+**R Studio:**
 
 Utilized for advanced data analysis and visualization.
+
 Techniques included data cleaning, exploratory data analysis, and statistical comparisons.
-Objectives
+
+**Objectives**
+
 The dataset can be used to:
 
 Understand the relationship between demographics and healthcare access.
+
 Identify gaps in local healthcare distribution and service quality.
+
 Analyze the prevalence of common illnesses and sanitation challenges.
-Format
+
+**Format**
+
 The dataset is stored in .xlsx format, with the data organized in rows (participants) and columns (survey questions and responses).
 
 Potential Use Cases
-Research: Analyze healthcare access in underserved communities.
-Policy Development: Inform decisions to improve healthcare infrastructure.
-Education: Provide a real-world dataset for healthcare studies.
-License
-This dataset is shared under [specify the license, e.g., MIT License]. Please ensure proper attribution if used.
 
-Acknowledgments
+Research: Analyze healthcare access in underserved communities.
+
+Policy Development: Inform decisions to improve healthcare infrastructure.
+
+Education: Provide a real-world dataset for healthcare studies.
+
+
+
+**Acknowledgments**
+
 We thank the participants for providing valuable insights and all contributors to this project.
