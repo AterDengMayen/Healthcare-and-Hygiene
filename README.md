@@ -7,18 +7,30 @@ Dataset Contents
 The dataset includes the following fields:
 
 Name: Participant's name.
+
 Age: Participant's age.
+
 Residence: Participant's location of stay.
+
 Nationality: Participant's nationality.
+
 Household Size: Number of people in the participant's household.
+
 Health Worker in Family: Presence of a health worker in the household and their role.
+
 Health Facilities: Distribution and types of health facilities in the area.
+
 Travel Time: Time taken to reach the nearest health center by foot (in minutes).
+
 Common Illnesses: Frequently reported illnesses within the locality.
+
 Sanitation: Availability and condition of latrines and bathrooms in compounds.
+
 Healthcare Satisfaction: Participants' experiences with local healthcare services.
+
 Local Chemists: Number of chemists in the participant's locality.
-Tools Used
+
+**Tools Used**
 The project was completed using two separate approaches:
 
 Excel:
